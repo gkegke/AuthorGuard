@@ -1,0 +1,65 @@
+
+#selectFilew {
+    text-align: center;
+}
+
+.selectNewFile {
+    margin: 20px auto 0;
+}
+
+#about {
+  max-width: 500px;
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+#sft {
+    color: #b1b1b1;
+    padding: 10px;
+    margin: 20px;
+}
+
+#howToUsew {
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto 0;
+}
+
+#howToUseT {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: block;
+}
+
+#howToUsew {
+  justify-content: center;
+  gap: 10px;
+}
+
+#imageMenu img {
+    height: 50px;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+#imageMenu img:hover {
+    transform: scale(1.5);
+}
+
+#selectedImage img {
+    max-width: 90%;
+}

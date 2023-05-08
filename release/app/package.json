@@ -1,0 +1,20 @@
+{
+  "name": "AuthorGuard",
+  "version": "1.0.0",
+  "description": "Helps prove you were the writer of a document, and it wasn't AI generated.",
+  "license": "MIT",
+  "author": {
+    "name": "gkegke",
+    "email": "toomesgud@gmail.com",
+    "url": "https://github.com/gkegke/AuthorGuard"
+  },
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "rebuild": "node -r ts-node/register ../../.erb/scripts/electron-rebuild.js",
+    "postinstall": "npm run rebuild && npm run link-modules",
+    "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.6"
+  }
+}

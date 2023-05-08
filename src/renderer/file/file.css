@@ -1,0 +1,113 @@
+/* Style for the whole component */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for the heading */
+
+#top {
+    font-size: 1.3em;
+}
+
+#top b {
+    color: #777;
+}
+
+/* Style for the link */
+.home {
+  color: #007bff;
+  padding: 5px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.fpath {
+  color: #777;
+}
+
+.normal {
+    display: block;
+    color: #777;
+}
+
+.added {
+    display: block;
+    color: green;
+}
+
+.removed {
+    display: block;
+    color: red;
+}
+
+/* defaults */
+
+#totalChanges {
+  padding: 10px 0 0 10px;
+  color: #777;
+}
+
+.change {
+    margin: 20px 10px;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+/* Style for the menu items */
+.Menu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Style for the file path */
+.fpath {
+  font-weight: bold;
+  color: gray;
+}
+
+/* Style for the date */
+.prettydt {
+  font-style: italic;
+  color: #777;
+  margin-right: 0.5rem;
+}
+
+.normaldt {
+  color: #111;
+  margin-right: 0.5rem;
+}
+
+.chars {
+    color: #777;
+    font-size: 0.7em;
+    padding: 5px 0;
+}
+
+.flength {
+  color: #111;
+}
+
+/* Style for the buttons */
+button {
+  margin: 10px 0.5rem 10px 0;
+  background-color: transparent;
+  border: none;
+  color: blue;
+  cursor: pointer;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+button:disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+
+.diff {
+    margin: 10px;
+}
