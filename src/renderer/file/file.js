@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
 
@@ -21,22 +21,25 @@ export default function File() {
   const [changes, setChanges] = useState([]);
   const [trackedFiles, setTrackedFiles] = useState([]);
 
-  async function fetchData() {
+  const fetchData = useCallback(async () => {
     const rows = await electron.eAPI.getChanges(filePath);
     setChanges(() => rows);
-  }
+  }, [filePath, setChanges]);
 
-  const handleFileChanged = async (filePath) => {
-    console.log(`detected ${filePath} has changed`);
+  const handleFileChanged = useCallback(
+    async (filePath) => {
+      console.log(`detected ${filePath} has changed`);
 
-    setTrackedFiles((prevTrackedFiles) => [...prevTrackedFiles]);
+      setTrackedFiles((prevTrackedFiles) => [...prevTrackedFiles]);
 
-    await fetchData();
+      await fetchData();
 
-    enqueueSnackbar(`File ${filePath} has changed.`, {
-      variant: 'info',
-    });
-  };
+      enqueueSnackbar(`File ${filePath} has changed.`, {
+        variant: 'info',
+      });
+    },
+    [setTrackedFiles, fetchData]
+  );
 
   useEffect(() => {
     let mounted = true;
@@ -118,11 +121,11 @@ export default function File() {
     return () => {
       mounted = false;
     };
-  }, [trackedFiles]);
+  }, [handleFileChanged, trackedFiles]);
 
   useEffect(() => {
     fetchData();
-  }, [filePath]);
+  }, [fetchData, filePath]);
 
   function toggleContent(index) {
     setChanges((prevChanges) => {

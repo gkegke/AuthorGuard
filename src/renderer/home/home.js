@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import Button from '@mui/material/Button';
 
@@ -67,31 +67,34 @@ function HowToUse() {
 export default function Home() {
   const [trackedFiles, setTrackedFiles] = useState([]);
 
-  const handleFileChanged = async (filePath) => {
-    console.log(`detected ${filePath} has changed`);
-
-    // Find the index of the trackedFile with the matching filePath
-    const index = trackedFiles.findIndex((file) => file.filePath === filePath);
-
-    // If found, create a copy of the trackedFile and update its modifiedAt value
-    if (index !== -1) {
-      const updatedFile = {
-        ...trackedFiles[index],
-        modifiedAt: new Date().toISOString(),
-      };
-
-      // Create a copy of the trackedFiles array and replace the old file with the updated one
-      const updatedFiles = [...trackedFiles];
-      updatedFiles[index] = updatedFile;
-
-      // Set the state with the updated array
-      setTrackedFiles(() => updatedFiles);
-    }
-
-    enqueueSnackbar(`File ${filePath} has changed.`, {
-      variant: 'info',
-    });
-  };
+  const handleFileChanged = useCallback(
+    async (filePath) => {
+      console.log(`
+      detected ${filePath} has changed
+      trackedFiles: ${J(trackedFiles)}
+    `);
+      // Find the index of the trackedFile with the matching filePath
+      const index = trackedFiles.findIndex(
+        (file) => file.filePath === filePath
+      );
+      // If found, create a copy of the trackedFile and update its modifiedAt value
+      if (index !== -1) {
+        const updatedFile = {
+          ...trackedFiles[index],
+          modifiedAt: new Date().toISOString(),
+        };
+        // Create a copy of the trackedFiles array and replace the old file with the updated one
+        const updatedFiles = [...trackedFiles];
+        updatedFiles[index] = updatedFile;
+        // Set the state with the updated array
+        setTrackedFiles(() => updatedFiles);
+      }
+      enqueueSnackbar(`File ${filePath} has changed.`, {
+        variant: 'info',
+      });
+    },
+    [trackedFiles]
+  );
 
   useEffect(() => {
     let mounted = true;

@@ -19,8 +19,8 @@ function humanFileSize(bytes, si=false, dp=1) {
     return bytes + ' B';
   }
 
-  const units = si 
-    ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] 
+  const units = si
+    ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
     : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
   let u = -1;
   const r = 10**dp;
@@ -55,7 +55,7 @@ function SelectedTable({ trackedFiles, removeTrackedFile }) {
     key: 'filePath',
     render: (fpath) => (
       <button className="tf" onClick={() => {
-        eAPI.openDirectory(fpath);
+        electron.eAPI.openDirectory(fpath);
       }}>
         <div className="open_msg">open folder</div>
         <div className="tf_fpath">{fpath}</div>
